@@ -6,16 +6,21 @@ const codes = {}
  * Decorator error
  */
 createError('BEE_SDK_ERR_DECORATOR_ALREADY_PRESENT', "The decodator '{0}' already added!")
+createError('BEE_SDK_ERR_CLIENT_ALREADY_PRESENT', "The client '{0}' already present!")
+
+/**
+ * Logger error
+ */
+createError('BEE_SDK_ERR_LOG_LEVEL_NOT_EXIST', "The log level '{0}' does not exist!")
 
 function createError (code, message, Base = Error) {
   if (!code) throw new Error(`[Bee SDK] error code must not be empty`)
   if (!message) throw new Error(`[Bee SDK] error message must not be empty`)
 
   code = code.toUpperCase()
-  
   function SDKError (a, b, c) {
     Error.captureStackTrace(this, SDKError)
-    
+
     this.name = `Bee SDK [${code}]`
     this.message = `${this.name}: ${message}`
 

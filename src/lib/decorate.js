@@ -18,8 +18,8 @@ function decorate (instance, name, fn) {
   }
 }
 
-function decorateSDK (name, fn, dependencies) {
-  decorate(this, name, fn, dependencies)
+function decorateSDK (name, fn) {
+  decorate(this, name, fn)
   return this
 }
 
@@ -27,7 +27,7 @@ function checkExistence (name) {
   return name in this
 }
 
-module.exports = {
+export default {
   add: decorateSDK,
   exist: checkExistence
 }

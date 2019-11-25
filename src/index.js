@@ -1,19 +1,40 @@
-const decorator = require('./lib/decorate')
+'use strict'
 
-function build (options) {
+import decorator from './lib/decorate'
+import { createLogger } from './lib/logger'
+import client from './lib/client'
+
+function SDK (options) {
   options = options || {}
 
   if (typeof options !== 'object') {
     throw new Error('Options must be an object')
   }
+  const clientsOpts = options.clients || false
 
-  const sdk = {
+  // Instance SDK components
+  const logger = createLogger(options)
+
+  let sdk = {
     name: options.name || 'sdk',
     decorate: decorator.add,
-    hasDecorator: decorator.exist
+    hasDecorator: decorator.exist,
+    // expose the log instance
+    log: logger,
+    addClient: client.add
+  }
+
+  if (clientsOpts) {
+    addClients(sdk, clientsOpts)
   }
 
   return sdk
+
+  function addClients(instance, opts) {
+    for (let name of Object.keys(opts)) {
+      instance.addClient(name, opts[name])
+    }
+  }
 }
 
-module.exports = build
+export default SDK
