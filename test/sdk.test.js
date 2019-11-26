@@ -10,6 +10,5 @@ it('We can check if the consumer called the class constructor', () => {
 
   mySdk.addService('customerService', service)
   mySdk.addService('customerService2', service2)
-  mySdk.customerService.getName()
-  mySdk.customerService.getSurname()
+  console.log(expect(mySdk.customerService.getName()))
 })
