@@ -7,6 +7,7 @@ const codes = {}
  */
 createError('BEE_SDK_ERR_DECORATOR_ALREADY_PRESENT', "The decodator '{0}' already added!")
 createError('BEE_SDK_ERR_CLIENT_ALREADY_PRESENT', "The client '{0}' already present!")
+createError('BEE_SDK_ERR_FN_NOT_VALID', "Service expects a function, instead got a '{0}'")
 
 /**
  * Logger error

@@ -8,10 +8,9 @@ function decorate (instance, name, fn) {
     throw new SDK_ERR_DECORATOR_ALREADY_PRESENT(name)
   }
 
-  if (fn && (typeof fn.getter === 'function' || typeof fn.setter === 'function')) {
+  if (fn && (typeof fn === 'function')) {
     Object.defineProperty(instance, name, {
-      get: fn.getter,
-      set: fn.setter
+      get: fn
     })
   } else {
     instance[name] = fn
@@ -20,6 +19,7 @@ function decorate (instance, name, fn) {
 
 function decorateSDK (name, fn) {
   decorate(this, name, fn)
+  this.log.info(`SKD - Decorator '${name}' added to sdk`)
   return this
 }
 

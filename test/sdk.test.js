@@ -1,18 +1,15 @@
 import SDK from '../src/index'
+import service from '../services'
+import service2 from '../services2'
 
 it('We can check if the consumer called the class constructor', () => {
   const mySdk = new SDK({
     name: 'KamAppSDK',
     logLevel: 'info',
-    clients: {
-      mammt: {
-        baseURL: 'http://localhost',
-        timeout: 1000,
-        headers: {'X-Custom-Header': 'foobar'}
-      }
-    }
   });
 
-  console.log(mySdk.mammt)
-
-});
+  mySdk.addService('customerService', service)
+  mySdk.addService('customerService2', service2)
+  mySdk.customerService.getName()
+  mySdk.customerService.getSurname()
+})

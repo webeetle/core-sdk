@@ -3,6 +3,8 @@
 import decorator from './lib/decorate'
 import { createLogger } from './lib/logger'
 import client from './lib/client'
+import initRequest from './lib/request'
+import service from './lib/service'
 
 function SDK (options) {
   options = options || {}
@@ -21,8 +23,11 @@ function SDK (options) {
     hasDecorator: decorator.exist,
     // expose the log instance
     log: logger,
-    addClient: client.add
+    addClient: client.add,
+    addService: service.add
   }
+
+  initRequest(sdk)
 
   if (clientsOpts) {
     addClients(sdk, clientsOpts)
