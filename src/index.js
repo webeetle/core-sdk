@@ -43,4 +43,3 @@ function SDK (options) {
 }
 
 export default SDK
-export { default as plugin } from './lib/plugin'
