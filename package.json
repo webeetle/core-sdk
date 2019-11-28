@@ -8,6 +8,9 @@
     "start": "npm run webpack",
     "webpack": "webpack -d --watch"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "author": "Davide D'Antonio <davide.dantonio@webeetle.com>",
   "license": "MIT",
   "dependencies": {
