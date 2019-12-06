@@ -1,15 +1,12 @@
 {
   "name": "@davidedantonio/core-sdk",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "Core SDK",
   "main": "index.js",
   "scripts": {
     "test": "jest ./test/*js",
     "start": "npm run webpack",
     "webpack": "webpack -d --watch"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "author": "Davide D'Antonio <davide.dantonio@webeetle.com>",
   "license": "MIT",
