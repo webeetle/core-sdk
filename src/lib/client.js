@@ -10,17 +10,7 @@ function add (instance, clientName, opts) {
   }
 
   let client = axios.create(opts)
-  instance.decorate(clientName, {    
-    get: client.get,
-    post: client.post,
-    options: client.options,
-    delete: client.delete,
-    patch: client.patch,
-    head: client.head,
-    put: client.put,
-    request: client.request,
-    getUri: client.getUri
-  })
+  instance.decorate(clientName, client)
 }
 
 // See full service options here https://github.com/axios/axios#request-config
