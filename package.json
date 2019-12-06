@@ -2,7 +2,7 @@
   "name": "@davidedantonio/core-sdk",
   "version": "1.0.0",
   "description": "Core SDK",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest ./test/*js",
     "start": "npm run webpack",
