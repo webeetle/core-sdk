@@ -1,6 +1,6 @@
 {
   "name": "@davide.dantonio/core-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Core SDK",
   "main": "index.js",
   "scripts": {
