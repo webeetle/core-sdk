@@ -8,9 +8,10 @@ function decorate (instance, name, fn) {
     throw new SDK_ERR_DECORATOR_ALREADY_PRESENT(name)
   }
 
-  if (fn && (typeof fn === 'function')) {
+  if (fn && (typeof fn.getter === 'function' || typeof fn.setter === 'function')) {
     Object.defineProperty(instance, name, {
-      get: fn
+      get: fn.getter,
+      set: fn.setter
     })
   } else {
     instance[name] = fn
