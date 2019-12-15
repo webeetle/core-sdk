@@ -1,6 +1,6 @@
 {
-  "name": "@davide.dantonio/core-sdk",
-  "version": "2.0.1",
+  "name": "@webeetle/core-sdk",
+  "version": "1.0.0",
   "description": "Core SDK",
   "main": "index.js",
   "scripts": {
