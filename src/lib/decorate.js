@@ -1,11 +1,11 @@
 'use strict'
 
 import { codes } from './errors'
-const { SDK_ERR_DECORATOR_ALREADY_PRESENT } = codes
+const { BEE_SDK_ERR_DECORATOR_ALREADY_PRESENT } = codes
 
 function decorate (instance, name, fn) {
   if (instance.hasOwnProperty(name)) {
-    throw new SDK_ERR_DECORATOR_ALREADY_PRESENT(name)
+    throw new BEE_SDK_ERR_DECORATOR_ALREADY_PRESENT(name)
   }
 
   if (fn && (typeof fn.getter === 'function' || typeof fn.setter === 'function')) {

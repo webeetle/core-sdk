@@ -27,7 +27,7 @@ function createError (code, message, Base = Error) {
 
     String.prototype.format = function() {
       a = this;
-      for (k in arguments) {
+      for (let k in arguments) {
         a = a.replace("{" + k + "}", arguments[k])
       }
       return a
