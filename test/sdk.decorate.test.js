@@ -1,8 +1,8 @@
 import tap from 'tap'
-const { test } = tap
 import SDK from '../index'
+const { test } = tap
 
-test('check decorator', (t) => {
+test('Decorate SDK instance', (t) => {
   t.plan(9)
   const f = _ => {
     return 'this is a message'
@@ -11,7 +11,7 @@ test('check decorator', (t) => {
   const sdk = new SDK({
     name: 'testSdk'
   })
-  
+
   sdk.decorate('utility', f)
   sdk.decorate('objectUtility', new Object({
     key: 'value'
@@ -31,4 +31,23 @@ test('check decorator', (t) => {
   } catch (e) {
     t.deepEqual(e.message, 'The decodator \'utility\' already added!')
   }
+})
+
+test('Decorate SDK instance with getter and setter', (t) => {
+  t.plan(1)
+  const sdk = new SDK({
+    name: 'testSdk'
+  })
+
+  sdk.decorate('utility', {
+    myVar: 'value',
+    get myVariable () {
+      return this.myVar
+    },
+    set myVariable (v) {
+      this.myVar = v
+    }
+  })
+
+  t.deepEqual(typeof sdk.utility, 'object')
 })

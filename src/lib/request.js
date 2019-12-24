@@ -2,7 +2,7 @@
 
 const axios = require('axios')
 
-function buildRequest(instance) {
+function buildRequest (instance) {
   instance.decorate('req', axios)
 }
 

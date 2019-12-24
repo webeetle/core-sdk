@@ -4,7 +4,7 @@ import { codes } from './errors'
 const { BEE_SDK_ERR_DECORATOR_ALREADY_PRESENT } = codes
 
 function decorate (instance, name, fn) {
-  if (instance.hasOwnProperty(name)) {
+  if (Object.prototype.hasOwnProperty.call(instance, name)) {
     throw new BEE_SDK_ERR_DECORATOR_ALREADY_PRESENT(name)
   }
 

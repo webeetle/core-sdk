@@ -31,7 +31,7 @@ function Logger (opts) {
 
   this.level = logLevel[level]
   const fl = {}
-  for (let l of Object.keys(logLevel)) {
+  for (const l of Object.keys(logLevel)) {
     Object.assign(fl, {
       [l]: msg => {
         if (this.level <= logLevel[l]) {

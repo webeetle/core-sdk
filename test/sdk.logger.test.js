@@ -1,6 +1,6 @@
 import tap from 'tap'
-const { test } = tap
 import SDK from '../index'
+const { test } = tap
 
 test('check logger', (t) => {
   t.plan(4)

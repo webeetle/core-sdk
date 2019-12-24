@@ -3,7 +3,7 @@
 import { codes } from './errors'
 const { BEE_SDK_ERR_FN_NOT_VALID } = codes
 
-function addService(instance, name, fn) {
+function addService (instance, name, fn) {
   if (typeof fn.default !== 'undefined') {
     fn = fn.default
   }

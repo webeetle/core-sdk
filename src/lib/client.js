@@ -5,11 +5,11 @@ import { codes } from './errors'
 const { BEE_SDK_ERR_CLIENT_ALREADY_PRESENT } = codes
 
 function add (instance, clientName, opts) {
-  if (instance.hasOwnProperty(clientName)) {
+  if (Object.prototype.hasOwnProperty.call(instance, clientName)) {
     throw new BEE_SDK_ERR_CLIENT_ALREADY_PRESENT(clientName)
   }
 
-  let client = axios.create(opts)
+  const client = axios.create(opts)
   instance.decorate(clientName, client)
 }
 

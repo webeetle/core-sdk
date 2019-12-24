@@ -9,15 +9,12 @@ import service from './lib/service'
 function SDK (options) {
   options = options || {}
 
-  if (typeof options !== 'object') {
-    throw new Error('Options must be an object')
-  }
   const clientsOpts = options.clients || false
 
   // Instance SDK components
   const logger = createLogger(options)
 
-  let sdk = {
+  const sdk = {
     name: options.name || 'sdk',
     decorate: decorator.add,
     hasDecorator: decorator.exist,
@@ -35,8 +32,8 @@ function SDK (options) {
 
   return sdk
 
-  function addClients(instance, opts) {
-    for (let name of Object.keys(opts)) {
+  function addClients (instance, opts) {
+    for (const name of Object.keys(opts)) {
       instance.addClient(name, opts[name])
     }
   }
