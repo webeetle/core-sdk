@@ -101,6 +101,54 @@ const total = mySdk.sum(5, 30)
 
 With the decorate API you can store everything you want. For example a configuration object.
 
+## Add service
+
+The `core-sdk` api expose another method that allow you to expose a service. For example, if you need to expose a set of functionality to manage users (create, update, delete) you can create a service, and decorate the main sdk instance. Below an example:
+
+```
+// file users.js
+
+import { plugin } from '@webeetle/core-sdk'
+
+export default plugin((instance, name) => {
+  instance.decorate(name, {
+    create: async userData => {
+      // create you user
+    },
+    getUserByUsername: async username => {
+      // get user by username
+    },
+    update: async userData => {
+      // update your user
+    },
+    delete: async username => {
+      // delete your user
+    }
+  })
+})
+```
+
+```
+// file mySdk.js
+
+import SDK from '@webeetle/core-sdk'
+import users from '/path/to/users'
+
+const mySdk = new SDK()
+mySdk,addService('users', users)
+
+// now we can use it
+mySdk.users.create({
+    name: 'Davide',
+    username: 'davide'
+  })
+  .then(response => {
+    // do something 
+  })
+  .catch(e => {
+    // do something 
+  })
+```
 
 ## Contributing
 
