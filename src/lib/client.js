@@ -10,6 +10,18 @@ function add (instance, clientName, opts) {
   }
 
   const client = axios.create(opts)
+  if (opts.interceptors) {
+    for (const interceptor in opts.interceptors) {
+      if (interceptor.type === 'request') {
+        client.interceptors.request.use(interceptor.func)
+      }
+
+      if (interceptor.type === 'response') {
+        client.interceptors.response.use(interceptor.func)
+      }
+    }
+  }
+
   instance.decorate(clientName, client)
 }
 
