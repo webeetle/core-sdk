@@ -9,7 +9,17 @@ test('check clients', (t) => {
     name: 'testSdk',
     clients: {
       exampleClient: {
-        baseUrl: 'http://localhost:300'
+        baseUrl: 'http://localhost:300',
+        interceptors: [
+          {
+            type: 'request',
+            func: config => {
+              console.log(config)
+            }, function (error) {
+              console.log(error);
+            }
+          }
+        ]
       }
     }
   })
