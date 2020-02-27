@@ -9,9 +9,16 @@ function add (instance, clientName, opts) {
     throw new BEE_SDK_ERR_CLIENT_ALREADY_PRESENT(clientName)
   }
 
-  const client = axios.create(opts)
+  let interceptors = null
   if (opts.interceptors) {
-    for (const interceptor in opts.interceptors) {
+    interceptors = opts.interceptors
+    delete opts.interceptors
+  }
+
+  const client = axios.create(opts)
+  if (interceptors) {
+    console.log(interceptors)
+    for (const interceptor in interceptors) {
       if (interceptor.type === 'request') {
         client.interceptors.request.use(interceptor.func)
       }
