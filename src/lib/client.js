@@ -18,7 +18,7 @@ function add (instance, clientName, opts) {
   const client = axios.create(opts)
   if (interceptors) {
     console.log(interceptors)
-    for (const interceptor in interceptors) {
+    for (const interceptor of interceptors) {
       if (interceptor.type === 'request') {
         client.interceptors.request.use(interceptor.func)
       }
