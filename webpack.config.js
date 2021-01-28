@@ -2,18 +2,17 @@ const path = require('path')
 
 module.exports = {
   entry: './index.js',
-
+  mode: 'production',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
   },
-
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: /(node_modules)/
+        exclude: /node_modules/
       }
     ]
   }
